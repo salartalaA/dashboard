@@ -7,7 +7,7 @@ Includes a few charts with **Chart.js** for practicing data visualization and cl
 
 ## 🔗 Demo
 
-[Live Demo](https://dashboard-4499ukrpa-salartalaas-projects.vercel.app/)
+[Live Demo](https://dashboard-pi-ten-91.vercel.app)
 
 ![Screenshot](src/assets/screenshot.png)
 
