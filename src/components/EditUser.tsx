@@ -35,7 +35,7 @@ const formSchema = z.object({
     .string()
     .min(2, { message: "Username must be at least 2 characters" })
     .max(50),
-  email: z.email({ message: "Invalid email address" }),
+  email: z.string().email({ message: "Invalid email address" }),
   phone: z
     .string()
     .min(10, { message: "Phone number must be at least 10 characters" })
@@ -59,14 +59,19 @@ const EditUser = () => {
     },
   });
 
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+    console.log("✅ Form submitted:", values);
+    window.location.reload();
+  };
+
   return (
     <SheetContent>
       <SheetHeader>
         <SheetTitle>Edit User</SheetTitle>
         <SheetDescription asChild>
           <Form {...form}>
-            <form className="space-y-8">
-              {/* NAME */}
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              {/* USERNAME */}
               <FormField
                 control={form.control}
                 name="username"
@@ -131,7 +136,7 @@ const EditUser = () => {
                       <Input {...field} />
                     </FormControl>
                     <FormDescription>
-                      This is the public location
+                      This is the public location.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -142,11 +147,14 @@ const EditUser = () => {
               <FormField
                 control={form.control}
                 name="role"
-                render={() => (
+                render={({ field }) => (
                   <FormItem>
                     <FormLabel>Role</FormLabel>
                     <FormControl>
-                      <Select>
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value}
+                      >
                         <SelectTrigger>
                           <SelectValue placeholder="Role" />
                         </SelectTrigger>
@@ -164,9 +172,8 @@ const EditUser = () => {
                 )}
               />
 
-              <Button type="submit">
-                Submit
-              </Button>
+              {/* SUBMIT BUTTON */}
+              <Button type="submit">Submit</Button>
             </form>
           </Form>
         </SheetDescription>
