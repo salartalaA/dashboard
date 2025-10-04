@@ -8,6 +8,8 @@ Includes a few charts with **Chart.js** for practicing data visualization and cl
 ## 🔗 Demo
 
 [Live Demo](https://dashboard-pi-ten-91.vercel.app)
+[User Page](https://dashboard-pi-ten-91.vercel.app/users/userpage)
+[Payment Page](https://dashboard-pi-ten-91.vercel.app/payments)
 
 ![Screenshot](src/assets/screenshot.png)
 
